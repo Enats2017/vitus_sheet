@@ -1,0 +1,53 @@
+nav {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #1e1b5e;
+  padding: 0 16px;
+
+  /* ✅ responsive */
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+}
+
+nav::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+nav a {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #6b7280;
+  text-decoration: none;
+
+  /* ✅ prevent shrinking */
+  flex-shrink: 0;
+}
+
+nav a.active {
+  background-color: #1e1b5e;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
+}
+
+/* 🔥 MOBILE (small screens) */
+@media (max-width: 768px) {
+  nav {
+    gap: 4px;
+    padding: 0 8px;
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+}
+
+/* 🔥 VERY SMALL SCREENS */
+@media (max-width: 480px) {
+  nav a {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}

@@ -1,0 +1,60 @@
+/* CentreUpdates.css */
+.card {
+  border: none;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  max-width: 1000px;
+
+  margin: 0 auto;   /* THIS centers the box */
+  margin-top: 30px;
+   margin-bottom: 30px;
+   width: 92%;
+  background: linear-gradient(135deg, #1e1b5e, #2a2470);
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0 0 0 32px;
+  margin: 0;
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  position: relative;
+   flex-wrap: wrap;
+}
+
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #e02020;
+  background: #ffffff;
+  position: absolute;
+  left: -40px;
+  top: 8px;
+}
+
+.dept {
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.text {
+  color: #f1f5f9;
+}

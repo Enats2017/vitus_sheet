@@ -1,0 +1,518 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+.session-patient {
+  width: 100%; /* use parent width */
+  padding: 20px 20px; /* same spacing like Sessions */
+  box-sizing: border-box;
+}
+
+/* Card */
+/* OUTER BOX (FULL WIDTH BACKGROUND) */
+.peo-outer-box {
+  width: 100%;
+  background: linear-gradient(135deg, #1e1b5e, #2a2470);
+  padding: 30px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;   /* ✅ center inner card */
+}
+
+/* INNER CARD (CENTERED BOX) */
+.card-peo {
+  width: 50%;
+  max-width: 900px;   /* ✅ control size like screenshot */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+/* Title */
+.peo-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Divider */
+.peo-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+}
+
+/* Layout */
+.peo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* LEFT */
+.peo-left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.peo-stat-box {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.peo-stat-box p {
+  color: #a5adc2;
+  font-size: 14px;
+  margin: 0 0 6px 0;
+}
+
+.peo-stat-box h1 {
+  color: #fff;
+  font-size: 32px;
+  margin: 0 0 4px 0;
+}
+
+.peo-stat-box span {
+  color: #a5adc2;
+  font-size: 13px;
+}
+
+/* RIGHT */
+.peo-list-container {
+  width: 50%;
+  display: flex;
+}
+
+/* Timeline list */
+.peo-list {
+  position: relative;
+  list-style: none;
+  padding-left: 45px; /* more space for dot */
+  margin: 0;
+  width: 320px;
+  max-height: 180px; /* increase height so scroll works */
+  max-height: 120px; /* smaller height → forces scroll */
+  overflow-y: scroll;
+   padding-right: 10px;
+  scrollbar-gutter: stable;
+
+}
+
+/* Vertical line */
+.peo-list::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 2px;
+  height: var(--line-height, 100%);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* List item */
+.peo-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #e5e7eb;
+ 
+}
+
+/* DOT (CentreUpdates style) */
+.dote {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #e02020;
+  background: #fff;
+  position: absolute;
+  left: -36px;
+  top: 8px;
+}
+
+/* TEXT */
+.text {
+  margin-left: 5px; /* exact gap */
+  margin-top: 5px;
+}
+
+/* SCROLLBAR (VISIBLE) */
+.peo-list::-webkit-scrollbar {
+  width: 6px;
+ 
+}
+
+.peo-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.peo-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.peo-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.date-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .peo-container {
+    flex-direction: column;
+  }
+
+  .peo-left,
+  .peo-list-container {
+    width: 100%;
+  }
+
+  .peo-list-container {
+    margin-top: 20px;
+  }
+}
+
+/* Sessions Card */
+.sessions-card {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #1e1b5e, #2a2470);
+  border-radius: 12px;
+  padding: 20px;
+  border: none;
+}
+
+/* Title */
+.sessions-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* Layout */
+.sessions-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* FILTER BOX */
+.filters-box {
+  width: 30%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filters-box h3 {
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* Filter group */
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #c3c8dc;
+}
+
+.filter-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* TABLE BOX */
+.table-box {
+  width: 70%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e5e7eb;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  color: #e5e7eb;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+tbody tr:hover {
+  background: rgba(224, 32, 32, 0.12);
+}
+
+/* Footer */
+.table-footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  color: #a5adc2;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sessions-container {
+    flex-direction: column;
+  }
+
+  .filters-box,
+  .table-box {
+    width: 100%;
+  }
+}
+
+.table-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  color: #a5adc2;
+}
+
+.table-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.download-btn,
+.refresh-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: #d7dae8;
+}
+
+.download-btn:hover,
+.refresh-btn:hover {
+  color: #e02020;
+}
+
+/* BUTTON CONTAINER */
+.filter-actions {
+  display: flex;
+  justify-content: center;   /* ✅ center horizontally */
+  align-items: center;
+  gap: 12px;                 /* space between buttons */
+  margin-top: 15px;
+}
+
+/* APPLY BUTTON */
+.apply-filter-btn {
+  background: linear-gradient(180deg, #ff5252, #e02020);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(224, 32, 32, 0.3);
+}
+
+.apply-filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(224, 32, 32, 0.4);
+}
+
+/* CLEAR BUTTON */
+.clear-filter-btn {
+  background: transparent;
+  color: #ff8080;
+  border: 1px solid #e02020;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.clear-filter-btn:hover {
+  background: #e02020;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(224, 32, 32, 0.3);
+}
+
+/* ERROR TEXT */
+.error-text {
+  color: #ff8080;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.table-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top: 4px solid #e02020;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* TABLE SCROLL CONTAINER */
+.table-scroll {
+  max-height: 250px;       /* 👈 control height */
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 10px;
+  display: block; 
+}
+
+/* STICKY HEADER (optional but recommended) */
+.table-scroll thead th {
+  position: sticky;
+  top: 0;
+  background: #1e1b5e;
+  z-index: 2;
+}
+
+/* SCROLLBAR STYLING */
+.table-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+/* react-datepicker theme override */
+.react-datepicker {
+  background: #1e1b5e;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.react-datepicker__header {
+  background: #2a2470;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker__day-name {
+  color: #ffffff;
+}
+
+.react-datepicker__day {
+  color: #d7dae8;
+}
+
+.react-datepicker__day:hover {
+  background: rgba(224, 32, 32, 0.25);
+  border-radius: 6px;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range {
+  background: #e02020 !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+}
+
+.react-datepicker__day--disabled {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #d7dae8;
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}

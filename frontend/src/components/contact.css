@@ -1,0 +1,168 @@
+.contact-box {
+  margin: 20px;
+  border: none;
+  border-radius: 16px;
+  padding: 18px;
+  background: linear-gradient(135deg, #1e1b5e, #2a2470);
+}
+
+.contact-box h2 {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* ── Central Helpline Banner ── */
+.helpline-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.helpline-icon {
+  font-size: clamp(20px, 4vw, 32px);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.helpline-label {
+  font-size: clamp(13px, 2vw, 18px);
+  font-weight: 600;
+  opacity: 0.85;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.helpline-number {
+  font-size: clamp(16px, 3vw, 30px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-left: auto;
+  word-break: break-all;
+  color: #ffffff;
+}
+
+/* ── Cards ── */
+.contact-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  flex: 1;
+  min-width: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-card h4 {
+  margin: 0;
+  padding: 10px 14px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.contact-info {
+  padding: 14px;
+}
+
+.contact-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* ── Textarea ── */
+.contact-info textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  outline: none;
+  resize: vertical;
+  line-height: 1.8;
+  font-family: inherit;
+  min-height: 150px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.contact-info textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-info textarea:focus {
+  border-color: #e02020;
+}
+
+.contact-info button {
+  background: #e02020;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.contact-info button:hover {
+  background: #b91c1c;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .contact-row {
+    flex-direction: column;
+  }
+  .contact-box {
+    margin: 12px;
+  }
+  .helpline-banner {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .helpline-number {
+    margin-left: 0;
+    width: 100%;
+    font-size: clamp(18px, 5vw, 24px);
+  }
+  .helpline-icon {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpline-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 4px;
+  }
+  .helpline-number {
+    font-size: clamp(20px, 6vw, 26px);
+    letter-spacing: 0.5px;
+    margin-left: 0;
+    width: 100%;
+  }
+  .helpline-label {
+    font-size: 14px;
+  }
+}
