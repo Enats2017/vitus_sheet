@@ -1,0 +1,35 @@
+Dialysis Centre Dashboard
+Colour & typography refresh 
+Changes: 
+Brand navy (#29377D) and brand red (#EE272A) are kept, but red is pulled back to a single job (primary actions and things that need attention).
+No block of text sits on a dark background anywhere. 
+The pages below are 1:1 stand-ins for the current screens
+Please refer to below for consistency for all pages:
+2. Quick view
+The two full-bleed navy blocks ("Sessions", "Centre Personnel") become white cards with a small navy heading — dark panels behind white text are gone.
+The four KPI tiles (mint, sky blue, yellow, pink) are now one light-grey tile style; only the two machine counts keep a thin colour cue (green = active, red = inactive) instead of a full colour fill. 
+Machine counts are accidentally showing in the Sessions card – this layout change does not have to be done, but the colour coding and font should stay
+The whole Contact block — helpline, feedforward form, points of contact — comes off a dark navy/purple fill onto white cards
+The feedforward text area becomes a plain white field with readable placeholder text (currently near-invisible pale text on a dark field).
+"Send Email" stays the one red primary button in this panel.
+Whatsapp logo should stay like in the original – in this render it is accidentally just a message icon
+3. Dialysis centre updates
+The "Centre Updates" panel moves off a dark navy fill onto a white card; the update category (Biomedical / HR / Ops) is now bold navy text instead of pale text on navy.
+Timeline dots and connecting line are simplified to a single navy line-and-dot style.
+4. Revenue share
+Whole panel and chart move from a dark navy background to white
+"Apply" stays a red primary button; "Reset" becomes a plain outlined secondary button 
+Revenue-sheet document icons move from teal circles to navy rounded squares, matching the icon language used everywhere else.
+5. Sessions and patient engagement
+PEO Activities panel: dark navy/purple nested boxes become a plain white card with light-grey KPI tiles, matching the Quick View style.
+Sessions table: header row and body move off dark navy onto white with a light-grey header row
+"Apply Filter" is the one red action in this section; date fields get a clean white input style 
+6. Maintenance and repair
+Machine cards move from solid navy tiles to white cards with a small navy icon badge, so machine names and dates are easy to read at a glance.
+RO Plant stats reuse the same light-grey KPI tile as every other screen instead of a separate dark block.
+7. Key documents
+Document icons move from teal to brand navy, consistent with the Revenue Sheets icons on the Revenue share screen.
+Notes for implementation
+Typeface: Inter (weights 400/500/600/700/800). Fallback stack: -apple-system, "Segoe UI", Roboto, Arial, sans-serif.
+Card shell: white fill, 1px #DEE1EA border, 12–14px corner radius, soft drop shadow — reuse for every panel.
+Red (#EE272A) is reserved for primary buttons and attention flags only — please don’t reintroduce it on headings, logout, or chart fills.

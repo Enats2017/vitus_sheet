@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --brand-navy: #29377D;
+  --brand-red: #EE272A;
+  --text-body: #282E3D;
+  --text-muted: #666880;
+  --navy-tint-50: #EEF0F8;
+  --page-bg: #F6F7FB;
+  --card-white: #FFFFFF;
+  --border-color: #DEE1EA;
+  --status-good: #2E9E6D;
+  --status-watch: #C07C1E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Master Card Shell Standard */
+.card-shell {
+  background: var(--card-white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
+  padding: 20px 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Typography Hierarchy Standards */
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--brand-navy);
+  margin: 0 0 16px 0;
+}
+
+.section-header, .card-header {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--brand-navy);
+  margin: 0 0 16px 0;
+}
+
+.kpi-figure {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--brand-navy);
+  margin: 8px 0;
+}
+
+.field-label, .table-head-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.footnote-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Scarce Red Primary Action Button */
+.btn-primary-red {
+  background-color: var(--brand-red);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary-red:hover {
+  background-color: #D61F22;
+  transform: translateY(-1px);
+}
+
+.btn-primary-red:active {
+  transform: translateY(0);
+}
+
+/* Secondary / Ghost Action Button */
+.btn-secondary-outline {
+  background-color: transparent;
+  color: var(--brand-navy);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-outline:hover {
+  background-color: var(--navy-tint-50);
+  border-color: var(--brand-navy);
+}

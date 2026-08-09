@@ -70,19 +70,21 @@ export default function PartnerShare() {
     a.remove();
   };
 
-  // ✅ theme colors: red gradient bars, dimmed unselected bar
+  // ✅ Flat data viz: Navy bars with a single red highlight bar for active/last index
   const colors = data.map((_, i) => {
-    if (activeIndex === null) return "#e02020";
-    if (activeIndex === i) return "#ff5252";
-    return "rgba(255,255,255,0.15)";
+    if (activeIndex !== null) {
+      return activeIndex === i ? "#EE272A" : "#29377D";
+    }
+    // Highlight last bar in red as primary focus, others in Navy
+    return i === data.length - 1 ? "#EE272A" : "#29377D";
   });
 
   const options = {
-   chart: {
+    chart: {
       type: "bar",
       toolbar: { show: false },
       background: "transparent",
-      parentHeightOffset: 0,
+      fontFamily: "'Inter', sans-serif",
       events: {
         dataPointSelection: (event, chartContext, config) => {
           const i = config.dataPointIndex;
@@ -95,16 +97,16 @@ export default function PartnerShare() {
       categories: months,
       labels: {
         style: {
-          fontSize: "13px",
+          fontSize: "12px",
           fontWeight: 600,
-          colors: "#d7dae8", // ✅ visible on navy
+          colors: "#666880",
         },
       },
       axisBorder: {
-        color: "rgba(255,255,255,0.15)",
+        color: "#DEE1EA",
       },
       axisTicks: {
-        color: "rgba(255,255,255,0.15)",
+        color: "#DEE1EA",
       },
     },
 
@@ -114,14 +116,14 @@ export default function PartnerShare() {
         style: {
           fontSize: "12px",
           fontWeight: 600,
-          colors: "#d7dae8", // ✅ visible on navy
+          colors: "#666880",
         },
       },
     },
 
     plotOptions: {
       bar: {
-        columnWidth: "30%",
+        columnWidth: "35%",
         borderRadius: 4,
         distributed: true,
       },
@@ -130,61 +132,43 @@ export default function PartnerShare() {
     dataLabels: {
       enabled: true,
       style: {
-        colors: ["#ffffff"], // ✅ readable value labels
-        fontSize: "12px",
+        colors: ["#282E3D"],
+        fontSize: "11px",
         fontWeight: 700,
       },
-      formatter: (val) => {
-        return `${parseFloat(val.toFixed(1))}k`;
-      },
+      formatter: (val) => `${parseFloat(val.toFixed(1))}k`,
+      offsetY: -20,
     },
 
     colors: colors,
 
     grid: {
-      borderColor: "rgba(255,255,255,0.08)", // ✅ faint gridlines, not harsh white
+      borderColor: "#DEE1EA",
       strokeDashArray: 0,
     },
 
-  legend: {
-      position: "bottom",
-      horizontalAlign: "center",
-      floating: false,
-      offsetY: 8,
-      itemMargin: {
-        horizontal: 14,
-        vertical: 8,
-      },
-      markers: {
-        width: 10,
-        height: 10,
-        radius: 3,
-        fillColors: months.map(() => "#e02020"),
-        offsetX: -2,
-      },
-      labels: {
-        colors: "#d7dae8",
-        useSeriesColors: false,
-      },
+    legend: {
+      show: false,
     },
 
-tooltip: {
+    tooltip: {
       custom: ({ series, seriesIndex, dataPointIndex, w }) => {
         const month = w.globals.labels[dataPointIndex];
         const value = series[seriesIndex][dataPointIndex];
         return `
           <div style="
-            background:#1e1b5e;
-            border:1px solid rgba(255,255,255,0.15);
+            background:#FFFFFF;
+            border:1px solid #DEE1EA;
             border-radius:8px;
             padding:8px 12px;
-            box-shadow:0 6px 16px rgba(0,0,0,0.4);
+            box-shadow:0 4px 12px rgba(41,55,125,0.1);
+            font-family:'Inter', sans-serif;
           ">
-            <div style="color:#ffffff;font-weight:700;font-size:13px;margin-bottom:4px;">
+            <div style="color:#29377D;font-weight:700;font-size:12px;margin-bottom:4px;">
               ${month}
             </div>
-            <div style="color:#ffffff;font-size:13px;display:flex;align-items:center;gap:6px;">
-              <span style="width:8px;height:8px;border-radius:50%;background:#e02020;display:inline-block;"></span>
+            <div style="color:#282E3D;font-size:13px;display:flex;align-items:center;gap:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#EE272A;display:inline-block;"></span>
               Revenue: ₹${Math.round(value * 1000).toLocaleString()}
             </div>
           </div>
@@ -280,7 +264,9 @@ tooltip: {
                   className="doc-item"
                   onClick={() => handleDownload(doc.link)}
                 >
-                  <div className="doc-icon">📄</div>
+                  <div className="doc-icon">
+                    <i className="fa-solid fa-file-lines"></i>
+                  </div>
                   <p>{doc.text}</p>
                 </div>
               ))
@@ -291,12 +277,12 @@ tooltip: {
           <p style={{
             marginTop: "20px",
             fontSize: "12px",
-            color: "rgba(255,255,255,0.6)",
+            color: "#666880",
             fontStyle: "italic",
-            borderTop: "1px solid rgba(255,255,255,0.12)",
+            borderTop: "1px solid #DEE1EA",
             paddingTop: "12px"
           }}>
-            ⚠️ <strong>Note:</strong> This data is only of the direct dialysis revenue share for the partner. Other additional revenue generated by the hospital is not included.
+            <i className="fa-solid fa-triangle-exclamation" style={{ color: "#C07C1E", marginRight: "6px" }}></i> <strong>Note:</strong> This data is only of the direct dialysis revenue share for the partner. Other additional revenue generated by the hospital is not included.
           </p>
         </div>
       </div>

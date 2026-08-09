@@ -1,32 +1,30 @@
-/* CentreUpdates.css */
 .card {
-  border: none;
+  border: 1px solid #DEE1EA;
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 24px;
   max-width: 1000px;
-
-  margin: 0 auto;   /* THIS centers the box */
-  margin-top: 30px;
-   margin-bottom: 30px;
-   width: 92%;
-  background: linear-gradient(135deg, #1e1b5e, #2a2470);
+  margin: 20px auto;
+  width: 95%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
 }
 
 .heading {
-  font-size: 18px;
-  font-weight: 500;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 1px solid #DEE1EA;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  color: #29377D;
 }
 
 .timeline-list {
   list-style: none;
-  padding: 0 0 0 32px;
+  padding: 0 0 0 28px;
   margin: 0;
   position: relative;
-  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  border-left: 2px solid #DEE1EA;
 }
 
 .timeline-item {
@@ -35,26 +33,29 @@
   gap: 12px;
   padding: 12px 0;
   position: relative;
-   flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
 }
 
-
 .dot {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 2px solid #e02020;
-  background: #ffffff;
+  border: 2px solid #29377D;
+  background: #FFFFFF;
   position: absolute;
-  left: -40px;
-  top: 8px;
+  left: -35px;
+  top: 16px;
 }
 
 .dept {
-  font-weight: 500;
-  color: #cbd5e1;
+  font-weight: 700;
+  color: #29377D;
+  font-size: 13px;
 }
 
 .text {
-  color: #f1f5f9;
+  color: #282E3D;
+  font-size: 13px;
+  font-weight: 500;
 }

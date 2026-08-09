@@ -1,5 +1,7 @@
-import "./Dashboard.css";
+import "./dashboard.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faChevronLeft, faChevronRight, faMobileScreenButton } from "@fortawesome/free-solid-svg-icons";
 
 const PersonnelBox = ({ personnel }) => {
   const [currentDoc, setCurrentDoc] = useState(0);
@@ -42,21 +44,21 @@ const PersonnelBox = ({ personnel }) => {
         onClick={() => handleCallClick(phone, cardKey)}
         title={isMobile() ? `Call ${phone}` : "Click to reveal number"}
       >
-        📞
+        <FontAwesomeIcon icon={faPhone} style={{ color: "#29377D", fontSize: "13px" }} />
       </button>
     );
   };
 
   return (
     <div className="personnel-box">
-      <h2 style={{ color: "white" }}>Centre Personnel</h2>
+      <h2>Centre Personnel</h2>
 
       <div className="personnel-row">
 
         {/* ───── Doctors ───── */}
         <div className="personnel-card green">
           <h4>
-            Consulting Nephrologist
+            <span>Consulting Nephrologist</span>
             {doctors.length > 0 && (
               <span className="doc-number">#{currentDoc + 1}</span>
             )}
@@ -66,34 +68,49 @@ const PersonnelBox = ({ personnel }) => {
             {doctors.length > 0 ? (
               <>
                 <div className="doctor-name-row">
-                  <CallButton
-                    phone={doctors[currentDoc]?.phone}
-                    cardKey={`doc-${currentDoc}`}
-                  />
-                  <p className="personnel-name">
-                    <strong>{doctors[currentDoc]?.name}</strong>
-                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <CallButton
+                      phone={doctors[currentDoc]?.phone}
+                      cardKey={`doc-${currentDoc}`}
+                    />
+                    <p className="personnel-name">
+                      <strong>{doctors[currentDoc]?.name}</strong>
+                    </p>
+                  </div>
 
                   {doctors.length > 1 && (
                     <span className="slide-arrows">
-                      {currentDoc > 0 && (
-                        <button className="arrow-btn" onClick={prevDoc}>&#8592;</button>
-                      )}
-                      {currentDoc < doctors.length - 1 && (
-                        <button className="arrow-btn" onClick={nextDoc}>&#8594;</button>
-                      )}
+                      <button 
+                        className="arrow-btn" 
+                        onClick={prevDoc} 
+                        disabled={currentDoc === 0}
+                        style={{ opacity: currentDoc === 0 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </button>
+                      <button 
+                        className="arrow-btn" 
+                        onClick={nextDoc} 
+                        disabled={currentDoc === doctors.length - 1}
+                        style={{ opacity: currentDoc === doctors.length - 1 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </button>
                     </span>
                   )}
                 </div>
 
                 {revealedPhone === `doc-${currentDoc}` && (
-                  <p className="phone-reveal">📱 {doctors[currentDoc]?.phone}</p>
+                  <p className="phone-reveal">
+                    <FontAwesomeIcon icon={faMobileScreenButton} style={{ marginRight: "6px" }} />
+                    {doctors[currentDoc]?.phone}
+                  </p>
                 )}
 
                 <p className="visiting-text">Visiting: {doctors[currentDoc]?.visiting}</p>
               </>
             ) : (
-              <p>No doctors found</p>
+              <p style={{ color: "#666880", margin: 0 }}>No doctors found</p>
             )}
           </div>
         </div>
@@ -101,7 +118,7 @@ const PersonnelBox = ({ personnel }) => {
         {/* ───── Technicians ───── */}
         <div className="personnel-card blue">
           <h4>
-            Technicians
+            <span>Technicians</span>
             {technicians.length > 0 && (
               <span className="doc-number">#{currentTech + 1}</span>
             )}
@@ -111,34 +128,47 @@ const PersonnelBox = ({ personnel }) => {
             {technicians.length > 0 ? (
               <>
                 <div className="doctor-name-row">
-                  <CallButton
-                    phone={technicians[currentTech]?.phone}
-                    cardKey={`tech-${currentTech}`}
-                  />
-                  <p className="personnel-name">
-                    <strong>{technicians[currentTech]?.name}</strong>
-                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <CallButton
+                      phone={technicians[currentTech]?.phone}
+                      cardKey={`tech-${currentTech}`}
+                    />
+                    <p className="personnel-name">
+                      <strong>{technicians[currentTech]?.name}</strong>
+                    </p>
+                  </div>
 
                   {technicians.length > 1 && (
                     <span className="slide-arrows">
-                      {currentTech > 0 && (
-                        <button className="arrow-btn" onClick={prevTech}>&#8592;</button>
-                      )}
-                      {currentTech < technicians.length - 1 && (
-                        <button className="arrow-btn" onClick={nextTech}>&#8594;</button>
-                      )}
+                      <button 
+                        className="arrow-btn" 
+                        onClick={prevTech} 
+                        disabled={currentTech === 0}
+                        style={{ opacity: currentTech === 0 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </button>
+                      <button 
+                        className="arrow-btn" 
+                        onClick={nextTech} 
+                        disabled={currentTech === technicians.length - 1}
+                        style={{ opacity: currentTech === technicians.length - 1 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </button>
                     </span>
                   )}
                 </div>
 
                 {revealedPhone === `tech-${currentTech}` && (
-                  <p className="phone-reveal">📱 {technicians[currentTech]?.phone}</p>
+                  <p className="phone-reveal">
+                    <FontAwesomeIcon icon={faMobileScreenButton} style={{ marginRight: "6px" }} />
+                    {technicians[currentTech]?.phone}
+                  </p>
                 )}
-
-                
               </>
             ) : (
-              <p>No technicians found</p>
+              <p style={{ color: "#666880", margin: 0 }}>No technicians found</p>
             )}
           </div>
         </div>
@@ -146,7 +176,7 @@ const PersonnelBox = ({ personnel }) => {
         {/* ───── Staff ───── */}
         <div className="personnel-card orange">
           <h4>
-            Other Staff
+            <span>Other Staff</span>
             {staff.length > 0 && (
               <span className="doc-number">#{currentStaff + 1}</span>
             )}
@@ -156,34 +186,47 @@ const PersonnelBox = ({ personnel }) => {
             {staff.length > 0 ? (
               <>
                 <div className="doctor-name-row">
-                  <CallButton
-                    phone={staff[currentStaff]?.phone}
-                    cardKey={`staff-${currentStaff}`}
-                  />
-                  <p className="personnel-name">
-                    <strong>{staff[currentStaff]?.name}</strong>
-                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <CallButton
+                      phone={staff[currentStaff]?.phone}
+                      cardKey={`staff-${currentStaff}`}
+                    />
+                    <p className="personnel-name">
+                      <strong>{staff[currentStaff]?.name}</strong>
+                    </p>
+                  </div>
 
                   {staff.length > 1 && (
                     <span className="slide-arrows">
-                      {currentStaff > 0 && (
-                        <button className="arrow-btn" onClick={prevStaff}>&#8592;</button>
-                      )}
-                      {currentStaff < staff.length - 1 && (
-                        <button className="arrow-btn" onClick={nextStaff}>&#8594;</button>
-                      )}
+                      <button 
+                        className="arrow-btn" 
+                        onClick={prevStaff} 
+                        disabled={currentStaff === 0}
+                        style={{ opacity: currentStaff === 0 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </button>
+                      <button 
+                        className="arrow-btn" 
+                        onClick={nextStaff} 
+                        disabled={currentStaff === staff.length - 1}
+                        style={{ opacity: currentStaff === staff.length - 1 ? 0.4 : 1 }}
+                      >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </button>
                     </span>
                   )}
                 </div>
 
                 {revealedPhone === `staff-${currentStaff}` && (
-                  <p className="phone-reveal">📱 {staff[currentStaff]?.phone}</p>
+                  <p className="phone-reveal">
+                    <FontAwesomeIcon icon={faMobileScreenButton} style={{ marginRight: "6px" }} />
+                    {staff[currentStaff]?.phone}
+                  </p>
                 )}
-
-            
               </>
             ) : (
-              <p>No staff found</p>
+              <p style={{ color: "#666880", margin: 0 }}>No staff found</p>
             )}
           </div>
         </div>

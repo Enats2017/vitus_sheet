@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Contact.css";
+import "./contact.css";
 
 const BASE = import.meta.env.VITE_API_BASE_URL;
 
@@ -8,11 +8,11 @@ const Contact = ({ contact }) => {
     const [status, setStatus] = useState("");
     const [activeContact, setActiveContact] = useState(null);
 
-    const phone = JSON.parse(localStorage.getItem("loginData") || "{}")?.phone; // ← ADDED
+    const phone = JSON.parse(localStorage.getItem("loginData") || "{}")?.phone;
 
     if (!contact) {
         return (
-            <p style={{ marginLeft: "100px", marginTop: "10px" }}>
+            <p style={{ marginLeft: "100px", marginTop: "10px", color: "#666880" }}>
                 No Contacts
             </p>
         );
@@ -72,7 +72,6 @@ const Contact = ({ contact }) => {
             name: contact.patient_engagement,
             phone: contact.patient_engagement_no,
         },
-        // { label: "WhatsApp",           name: contact.whatsapp_no,        phone: contact.whatsapp_no },
     ];
 
     const handleIconClick = (index, phone) => {
@@ -98,26 +97,25 @@ const Contact = ({ contact }) => {
                 <a
                     href={`tel:${phone}`}
                     className="helpline-icon"
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "#29377D" }}
                 >
-                    📞
+                    <i className="fa-solid fa-phone" style={{ fontSize: "18px" }}></i>
                 </a>
                 <span
                     onClick={() =>
                         handleWhatsAppClick(contact?.whatsapp_no || phone)
                     }
                     className="helpline-icon"
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
                     title="Open WhatsApp"
                 >
                     <i
                         className="fa-brands fa-whatsapp"
-                        style={{ color: "#25D366" }}
+                        style={{ color: "#25D366", fontSize: "20px" }}
                     ></i>
                 </span>
                 <span className="helpline-label">Central Helpline</span>
-                <span className="helpline-number">{phone}</span>{" "}
-                {/* ← CHANGED */}
+                <span className="helpline-number">{phone}</span>
             </div>
 
             <div className="contact-row">
@@ -135,23 +133,23 @@ const Contact = ({ contact }) => {
                             onChange={(e) => setFeedback(e.target.value)}
                         />
                         {status === "empty" && (
-                            <p style={{ color: "orange", margin: "6px 0" }}>
-                                ⚠️ Please enter some feedback before sending.
+                            <p style={{ color: "#C07C1E", margin: "6px 0", fontSize: "13px" }}>
+                                Please enter some feedback before sending.
                             </p>
                         )}
                         {status === "sending" && (
-                            <p style={{ color: "gray", margin: "6px 0" }}>
-                                ⏳ Sending...
+                            <p style={{ color: "#666880", margin: "6px 0", fontSize: "13px" }}>
+                                Sending...
                             </p>
                         )}
                         {status === "success" && (
-                            <p style={{ color: "green", margin: "6px 0" }}>
-                                ✅ Feedback sent successfully!
+                            <p style={{ color: "#2E9E6D", margin: "6px 0", fontSize: "13px" }}>
+                                Feedback sent successfully!
                             </p>
                         )}
                         {status === "error" && (
-                            <p style={{ color: "red", margin: "6px 0" }}>
-                                ❌ Failed to send. Please try again.
+                            <p style={{ color: "#EE272A", margin: "6px 0", fontSize: "13px" }}>
+                                Failed to send. Please try again.
                             </p>
                         )}
                         <button
@@ -179,7 +177,7 @@ const Contact = ({ contact }) => {
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
-                                    gap: "8px",
+                                    gap: "10px",
                                 }}
                             >
                                 <span
@@ -188,8 +186,7 @@ const Contact = ({ contact }) => {
                                     }
                                     style={{
                                         cursor: "pointer",
-                                        fontSize: "16px",
-                                        color: "#c2185b",
+                                        color: "#29377D",
                                         flexShrink: 0,
                                     }}
                                     title={
@@ -198,7 +195,7 @@ const Contact = ({ contact }) => {
                                             : "Click to see number"
                                     }
                                 >
-                                    📞
+                                    <i className="fa-solid fa-phone" style={{ fontSize: "13px" }}></i>
                                 </span>
                                 <span>
                                     {point.label}: {point.name}
@@ -207,8 +204,8 @@ const Contact = ({ contact }) => {
                                     <span
                                         style={{
                                             marginLeft: "auto",
-                                            color: "#c2185b",
-                                            fontWeight: "500",
+                                            color: "#29377D",
+                                            fontWeight: "600",
                                             flexShrink: 0,
                                         }}
                                     >

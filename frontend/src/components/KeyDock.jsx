@@ -54,7 +54,9 @@ const handleDownload = (link) => {
                 onClick={() => handleDownload(doc.link)}
               >
 
-                <div className="doc-icon">📄</div>
+                <div className="doc-icon">
+                  <i className="fa-solid fa-file-lines"></i>
+                </div>
 
                 <p>{doc.text}</p>
                 {doc.valid_upto && (

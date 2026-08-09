@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./SessionPatient.css";
+import "./sessionpatient.css";
 import { useDashboard } from "./DashboardContext";
 import Contact from "./Contact";
 import DatePicker from "react-datepicker";

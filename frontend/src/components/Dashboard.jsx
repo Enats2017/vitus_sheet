@@ -1,4 +1,4 @@
-import "./Dashboard.css";
+import "./dashboard.css";
 import Contact from "./Contact";
 import PersonnelBox from "./PersonnelBox";
 import { useDashboard } from "./DashboardContext";
@@ -17,50 +17,47 @@ const Dashboard = () => {
   const { metrics } = session;
 
   return (
-    <>
-      <div className="big-box">
-        <div className="dashboard">
-          <div className="main">
-            <div className="sessions-box">
-              <h2 style={{ color: "white" }}>Sessions</h2>
-              <div className="box-row">
-                <div className="border-box green">
-                  <h4>MTD Sessions</h4>
-                  <h1>{metrics?.mtdSessions}</h1>
-                  <h3 style={{ fontWeight: "500", margin: "4px 0" }}>
-                    as of {formatDate(new Date())}
-                  </h3>
-                </div>
-                <div className="border-box blue">
-                  <h4>Last Month Sessions</h4>
-                  <h1>{metrics?.lastMonthSessions}</h1>
-                </div>
-                <div className="border-box orange">
-                  <h4>Patients</h4>
-                  <h1>{metrics?.patients}</h1>
-                </div>
-              </div>
+    <div className="dashboard">
+      <div className="main">
+        <div className="sessions-box">
+          <h2>Sessions</h2>
+          <div className="box-row">
+            <div className="border-box green">
+              <h4>MTD Sessions</h4>
+              <h1>{metrics?.mtdSessions}</h1>
+              <h3>
+                as of {formatDate(new Date())}
+              </h3>
             </div>
-            <div className="border-box machine-box">
-              <h4>Active Dialysis Machines</h4>
-              <h1>{metrics?.activeMachines}</h1>
+            <div className="border-box blue">
+              <h4>Last Month Sessions</h4>
+              <h1>{metrics?.lastMonthSessions}</h1>
             </div>
-            <div className="border-box machine-box-inactive">
-                <h4>Inactive Dialysis Machines</h4>
-                <h1>{metrics?.inactiveMachines}</h1>
-              </div>
+            <div className="border-box orange">
+              <h4>Patients</h4>
+              <h1>{metrics?.patients}</h1>
+            </div>
           </div>
-          <PersonnelBox personnel={centre_personnel} />
         </div>
-        <p style={{ marginTop: "10px", marginLeft: "10px" }}>
-          Data is updated for previous month
-        </p>
+        <div className="machine-box">
+          <h4>Active Dialysis Machines</h4>
+          <h1>{metrics?.activeMachines}</h1>
+        </div>
+        <div className="machine-box-inactive">
+          <h4>Inactive Dialysis Machines</h4>
+          <h1>{metrics?.inactiveMachines}</h1>
+        </div>
       </div>
+      <PersonnelBox personnel={centre_personnel} />
 
-      <div className="big-box">
+      <p className="footnote-text" style={{ marginTop: "12px" }}>
+        Data is updated for previous month
+      </p>
+
+      <div style={{ marginTop: "24px" }}>
         <Contact contact={contact} />
       </div>
-    </>
+    </div>
   );
 };
 

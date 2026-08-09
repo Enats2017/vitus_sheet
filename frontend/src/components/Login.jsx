@@ -37,21 +37,17 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div style={{ width: "350px" }} className="card">
-        <div className="icon">
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-icon">
           <FontAwesomeIcon icon={faUser} />
         </div>
 
-        <h2 style={{ color: "#ffffff" }}>Welcome back</h2>
-        <p style={{ marginTop: "15px", color: "#ffffff" }}>
-          Sign in to your account to continue
-        </p>
-
-        
+        <h2>Welcome back</h2>
+        <p>Sign in to your account to continue</p>
 
         <div className="input-group">
-          <label style={{ color: "#ffffff" }}>USERNAME</label>
+          <label>USERNAME</label>
           <input
             type="text"
             placeholder="Enter username"
@@ -61,7 +57,7 @@ const Login = () => {
         </div>
 
         <div className="input-group">
-          <label style={{ color: "#ffffff" }}>PASSWORD</label>
+          <label>PASSWORD</label>
           <div style={{ position: "relative" }}>
             <input
               type={showPass ? "text" : "password"}
@@ -73,10 +69,11 @@ const Login = () => {
               onClick={() => setShowPass(!showPass)}
               style={{
                 position: "absolute",
-                right: "10px",
+                right: "12px",
                 top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
+                color: "#666880",
               }}
             >
               <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
@@ -87,7 +84,7 @@ const Login = () => {
         <button className="btn" onClick={handleLogin} disabled={loading}>
           {loading ? "Signing in..." : "Sign In"}
         </button>
-        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+        {error && <p style={{ color: "#EE272A", marginTop: "12px", fontSize: "13px" }}>{error}</p>}
       </div>
     </div>
   );

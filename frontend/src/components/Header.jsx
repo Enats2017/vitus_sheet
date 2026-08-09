@@ -3,56 +3,93 @@ import { useNavigate } from "react-router-dom";
 
 const BASE = import.meta.env.VITE_API_BASE_URL;
 
-const Header = ({session}) => {
-  
+const Header = ({ session }) => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     await axios.post(`${BASE}/sheet/logout.php`, {}, { withCredentials: true });
-    localStorage.clear();   // instead of removeItem
+    localStorage.clear();
     navigate("/");
   };
 
-  
+  if (!session) return <p style={{ padding: "20px", textAlign: "center", color: "#666880" }}>Loading...</p>;
+  const { centre } = session;
 
-  if (!session) return <p>Loading...</p>;
-  const { centre, user } = session;
   return (
-    <>
-      <div className="header" style={{ position: "relative" }}>
-        <h1
-          style={{
-            background: "linear-gradient(135deg, #1e1b5e, #2a2470)",
-            color: "white",
-            padding: "10px",
-            borderRadius: "8px",
-          }}
-        >
-          {centre}
-        </h1>
-        <h2>Dialysis Centre Dashboard</h2>
+    <div className="header-container" style={{ background: "#F6F7FB", padding: "0 0 16px 0" }}>
+      {/* Brand Navy Top Header Bar */}
+      <div
+        style={{
+          background: "#29377D",
+          color: "#FFFFFF",
+          padding: "14px 24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          boxShadow: "0 2px 6px rgba(41, 55, 125, 0.12)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <i className="fa-solid fa-hospital-user" style={{ fontSize: "20px", color: "#EEF0F8" }}></i>
+          <h1
+            style={{
+              margin: 0,
+              fontSize: "18px",
+              fontWeight: 700,
+              fontFamily: "'Inter', sans-serif",
+              letterSpacing: "0.3px",
+              color: "#FFFFFF",
+            }}
+          >
+            {centre}
+          </h1>
+        </div>
+
+        {/* Subtle Logout Button (Red is pulled back from logout!) */}
         <button
           onClick={handleLogout}
           style={{
-            position: "absolute",
-            right: "2vw", // responsive instead of 20px
-            top: "2vh", // responsive instead of 20px
-            padding: "clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px)",
-            borderRadius: "8px",
-            border: "none",
-            background: "#e02020",
-            color: "#fff",
+            padding: "6px 14px",
+            borderRadius: "6px",
+            border: "1px solid rgba(255, 255, 255, 0.35)",
+            background: "rgba(255, 255, 255, 0.1)",
+            color: "#FFFFFF",
             cursor: "pointer",
-            fontWeight: 500,
-            fontSize: "clamp(10px, 1.5vw, 14px)", // responsive text
-            marginTop: "17px",  
-            marginRight:"20px"
+            fontWeight: 600,
+            fontSize: "13px",
+            fontFamily: "'Inter', sans-serif",
+            transition: "all 0.2s ease",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
           }}
         >
+          <i className="fa-solid fa-right-from-bracket" style={{ fontSize: "12px" }}></i>
           Logout
         </button>
       </div>
-    </>
+
+      {/* Page Title Below Header Bar */}
+      <div style={{ padding: "16px 24px 0 24px" }}>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: "20px",
+            fontWeight: 700,
+            fontFamily: "'Inter', sans-serif",
+            color: "#29377D",
+          }}
+        >
+          Dialysis Centre Dashboard
+        </h2>
+      </div>
+    </div>
   );
 };
 
-export default Header;
+export default Header;
