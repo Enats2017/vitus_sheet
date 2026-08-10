@@ -13,6 +13,7 @@
   background: #FFFFFF;
   color: #282E3D;
   box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
+  margin-bottom: 3%;
 }
 
 .title {
@@ -31,6 +32,7 @@
   gap: 24px;
   margin-top: 20px;
   flex-wrap: wrap;
+  margin-bottom: 2%;
 }
 
 /* Left */
@@ -92,7 +94,8 @@
 
 /* Files */
 .files-section {
-  margin-top: 24px;
+  margin-top: 3%;
+  margin-bottom: 3%;
   background: #FFFFFF;
   border: 1px solid #DEE1EA;
   border-radius: 12px;
@@ -110,18 +113,20 @@
 
 .filter-row {
   display: flex;
-  gap: 16px;
-  align-items: flex-end;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
-  margin: 16px 0;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #DEE1EA;
+  margin: 16px 0 2.5% 0;
+  padding: 16px 20px;
+  background: #EEF0F8;
+  border: 1px solid #DEE1EA;
+  border-radius: 10px;
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .filter-group label {
@@ -133,8 +138,14 @@
   font-weight: 700;
 }
 
-.filter-group select,
-.filter-group input {
+.filter-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-inputs select,
+.filter-inputs input {
   padding: 8px 12px;
   border: 1px solid #DEE1EA;
   border-radius: 6px;
@@ -142,19 +153,38 @@
   font-size: 13px;
   background: #FFFFFF;
   color: #282E3D;
+  height: 38px;
+  box-sizing: border-box;
 }
 
-.filter-group select:focus,
-.filter-group input:focus {
+.filter-inputs select {
+  min-width: 130px;
+}
+
+.filter-inputs input {
+  width: 90px;
+}
+
+.filter-inputs select:focus,
+.filter-inputs input:focus {
   outline: none;
   border-color: #29377D;
 }
 
-/* Filter Row Buttons - Apply is PRIMARY RED */
-.filter-row button:first-of-type {
-  padding: 9px 18px;
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 4px;
+  margin-top: 17px;
+  height: 38px;
+}
+
+.btn-apply {
+  height: 38px;
+  padding: 0 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #EE272A;
   color: #FFFFFF;
   cursor: pointer;
@@ -164,15 +194,16 @@
   transition: background-color 0.2s ease;
 }
 
-.filter-row button:first-of-type:hover {
+.btn-apply:hover:not(:disabled) {
   background: #D61F22;
 }
 
-.filter-row button:last-child {
-  padding: 9px 18px;
+.btn-reset {
+  height: 38px;
+  padding: 0 18px;
   border: 1px solid #DEE1EA;
-  border-radius: 8px;
-  background: transparent;
+  border-radius: 6px;
+  background: #FFFFFF;
   color: #29377D;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
@@ -181,7 +212,7 @@
   transition: all 0.2s ease;
 }
 
-.filter-row button:last-child:hover {
+.btn-reset:hover:not(:disabled) {
   background: #EEF0F8;
   border-color: #29377D;
 }

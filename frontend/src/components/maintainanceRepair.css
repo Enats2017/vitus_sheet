@@ -10,7 +10,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
   color: #29377D;
 }
 
@@ -20,7 +20,7 @@
   background: #FFFFFF;
   border: 1px solid #DEE1EA;
   border-radius: 12px;
-  padding: 20px;
+  padding: 20px 24px;
   box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
   box-sizing: border-box;
   margin-bottom: 24px;
@@ -28,9 +28,9 @@
 
 /* ===== SCROLLABLE AREA ===== */
 .machines-scroll-box {
-  max-height: 420px;
+  max-height: 430px;
   overflow-y: auto;
-  padding-right: 8px;
+  padding: 8px 6px 8px 4px;
 }
 
 /* ===== GRID ===== */
@@ -66,6 +66,8 @@
   font-size: 15px;
   font-weight: 700;
   color: #29377D;
+  border-bottom: 1px solid #EEF0F8;
+  padding-bottom: 8px;
 }
 
 /* ===== BODY ===== */
@@ -76,40 +78,67 @@
   margin: 12px 0 0 0;
 }
 
-/* ===== IMAGE ===== */
-.machine-img {
-  width: 50px;
-  height: 50px;
+/* ===== ICON / MACHINE PHOTO CONTAINER ===== */
+.machine-icon-box {
+  width: 48px;
+  height: 48px;
   border-radius: 8px;
-  object-fit: cover;
-  flex-shrink: 0;
+  background: #FFFFFF;
   border: 1px solid #DEE1EA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.machine-icon-box img,
+.machine-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 /* ===== INFO ===== */
 .machine-info {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.machine-info p {
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.info-label {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
+  font-weight: 500;
   color: #666880;
-  margin: 4px 0;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.machine-info span {
-  font-weight: 600;
-  color: #282E3D;
-  margin-left: 2px;
+.info-icon {
+  color: #29377D;
+  font-size: 12px;
 }
 
-.machine-info svg {
-  color: #29377D;
+.info-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #282E3D;
+  margin-left: 2px;
 }
 
 /* ===== RO CARD ===== */
@@ -122,27 +151,48 @@
   margin-bottom: 24px;
 }
 
-.ro-card .section-title {
-  color: #29377D;
-}
-
 /* ===== RO GRID ===== */
 .ro-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-top: 14px;
-  flex-wrap: wrap;
 }
 
-/* ===== RO ITEM ===== */
+/* ===== RO ITEM KPI TILES (LIGHT GREY) ===== */
 .ro-item {
   background: #EEF0F8;
   border: 1px solid #DEE1EA;
-  padding: 16px 20px;
   border-radius: 10px;
+  padding: 18px 16px;
   text-align: center;
-  flex: 1;
-  min-width: 180px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.ro-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(41, 55, 125, 0.06);
+}
+
+.ro-item.border-blue {
+  border-left: 4px solid #29377D;
+}
+
+.ro-item.border-green {
+  border-left: 4px solid #2E9E6D;
+}
+
+.ro-item.border-orange {
+  border-left: 4px solid #C07C1E;
+}
+
+.ro-item.border-navy {
+  border-left: 4px solid #29377D;
 }
 
 .ro-item h4 {
@@ -153,34 +203,38 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #666880;
+  line-height: 1.4;
 }
 
-.ro-item p {
-  margin: 8px 0 0;
+.ro-item h1 {
+  margin: 10px 0 0 0;
   font-family: 'Inter', sans-serif;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
   color: #29377D;
+  line-height: 1.2;
+}
+
+.ro-item h1.ro-date-val {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-  .machines-grid {
+  .machines-grid, .ro-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 992px) {
-  .machines-grid {
+  .machines-grid, .ro-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .machines-grid {
+  .machines-grid, .ro-grid {
     grid-template-columns: repeat(1, 1fr);
-  }
-  .ro-grid {
-    flex-direction: column;
   }
 }

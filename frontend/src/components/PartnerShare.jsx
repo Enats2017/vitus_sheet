@@ -132,12 +132,12 @@ export default function PartnerShare() {
     dataLabels: {
       enabled: true,
       style: {
-        colors: ["#282E3D"],
+        colors: ["#FFFFFF"],
         fontSize: "11px",
         fontWeight: 700,
       },
       formatter: (val) => `${parseFloat(val.toFixed(1))}k`,
-      offsetY: -20,
+      offsetY: 0,
     },
 
     colors: colors,
@@ -148,7 +148,24 @@ export default function PartnerShare() {
     },
 
     legend: {
-      show: false,
+      show: true,
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: "12px",
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 600,
+      labels: {
+        colors: "#282E3D",
+      },
+      markers: {
+        width: 12,
+        height: 12,
+        radius: 2,
+      },
+      itemMargin: {
+        horizontal: 10,
+        vertical: 8,
+      },
     },
 
     tooltip: {
@@ -194,36 +211,42 @@ export default function PartnerShare() {
           <div className="filter-row">
             <div className="filter-group">
               <label>From</label>
-              <select value={fromMonth} onChange={(e) => setFromMonth(e.target.value)}>
-                <option value="">Month</option>
-                {MONTHS.map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
-              <input
-                type="number"
-                placeholder="Year"
-                value={fromYear}
-                onChange={(e) => setFromYear(e.target.value)}
-              />
+              <div className="filter-inputs">
+                <select value={fromMonth} onChange={(e) => setFromMonth(e.target.value)}>
+                  <option value="">Month</option>
+                  {MONTHS.map((m) => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <input
+                  type="number"
+                  placeholder="Year"
+                  value={fromYear}
+                  onChange={(e) => setFromYear(e.target.value)}
+                />
+              </div>
             </div>
 
             <div className="filter-group">
               <label>To</label>
-              <select value={toMonth} onChange={(e) => setToMonth(e.target.value)}>
-                <option value="">Month</option>
-                {MONTHS.map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
-              <input
-                type="number"
-                placeholder="Year"
-                value={toYear}
-                onChange={(e) => setToYear(e.target.value)}
-              />
+              <div className="filter-inputs">
+                <select value={toMonth} onChange={(e) => setToMonth(e.target.value)}>
+                  <option value="">Month</option>
+                  {MONTHS.map((m) => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <input
+                  type="number"
+                  placeholder="Year"
+                  value={toYear}
+                  onChange={(e) => setToYear(e.target.value)}
+                />
+              </div>
             </div>
 
-            <button onClick={applyFilter} disabled={loading}>
-              {loading ? "Loading..." : "Apply"}
-            </button>
-            <button onClick={resetFilter} disabled={loading}>Reset</button>
+            <div className="filter-actions">
+              <button className="btn-apply" onClick={applyFilter} disabled={loading}>
+                {loading ? "Loading..." : "Apply"}
+              </button>
+              <button className="btn-reset" onClick={resetFilter} disabled={loading}>Reset</button>
+            </div>
           </div>
 
           <div className="partner-content">
@@ -243,7 +266,7 @@ export default function PartnerShare() {
                   options={options}
                   series={series}
                   type="bar"
-                  height={300}
+                  height={340}
                 />
               )}
 

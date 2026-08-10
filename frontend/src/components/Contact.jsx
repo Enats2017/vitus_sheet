@@ -97,9 +97,9 @@ const Contact = ({ contact }) => {
                 <a
                     href={`tel:${phone}`}
                     className="helpline-icon"
-                    style={{ textDecoration: "none", color: "#29377D" }}
+                    style={{ textDecoration: "none", color: "#29377D", display: "flex", alignItems: "center" }}
                 >
-                    <i className="fa-solid fa-phone" style={{ fontSize: "18px" }}></i>
+                    <i className="fa-solid fa-phone" style={{ fontSize: "24px" }}></i>
                 </a>
                 <span
                     onClick={() =>
@@ -111,7 +111,7 @@ const Contact = ({ contact }) => {
                 >
                     <i
                         className="fa-brands fa-whatsapp"
-                        style={{ color: "#25D366", fontSize: "20px" }}
+                        style={{ color: "#25D366", fontSize: "26px" }}
                     ></i>
                 </span>
                 <span className="helpline-label">Central Helpline</span>
@@ -170,49 +170,62 @@ const Contact = ({ contact }) => {
 
                 <div className="contact-card">
                     <h4>Points of Contact</h4>
-                    <div className="contact-info">
+                    <div className="contact-info" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                         {points.map((point, index) => (
-                            <p
+                            <div
                                 key={index}
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
-                                    gap: "10px",
+                                    gap: "12px",
+                                    padding: "10px 14px",
+                                    background: "#EEF0F8",
+                                    borderRadius: "8px",
+                                    border: "1px solid #DEE1EA",
                                 }}
                             >
-                                <span
-                                    onClick={() =>
-                                        handleIconClick(index, point.phone)
-                                    }
-                                    style={{
-                                        cursor: "pointer",
-                                        color: "#29377D",
-                                        flexShrink: 0,
-                                    }}
-                                    title={
-                                        isMobile()
-                                            ? `Call ${point.label}`
-                                            : "Click to see number"
-                                    }
-                                >
-                                    <i className="fa-solid fa-phone" style={{ fontSize: "13px" }}></i>
-                                </span>
-                                <span>
-                                    {point.label}: {point.name}
-                                </span>
-                                {activeContact === index && (
+                                {point.phone ? (
+                                    <a
+                                        href={`tel:${point.phone}`}
+                                        style={{ textDecoration: "none", color: "#29377D", display: "flex", alignItems: "center" }}
+                                        title={`Call ${point.name || point.label}`}
+                                    >
+                                        <i className="fa-solid fa-phone" style={{ fontSize: "16px" }}></i>
+                                    </a>
+                                ) : (
+                                    <i className="fa-solid fa-phone" style={{ fontSize: "16px", color: "#666880" }}></i>
+                                )}
+
+                                {point.phone && (
                                     <span
+                                        onClick={() => handleWhatsAppClick(point.phone)}
+                                        style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+                                        title="Open WhatsApp"
+                                    >
+                                        <i className="fa-brands fa-whatsapp" style={{ color: "#25D366", fontSize: "18px" }}></i>
+                                    </span>
+                                )}
+
+                                <span style={{ fontSize: "14px", fontWeight: "600", color: "#282E3D" }}>
+                                    {point.label}: <span style={{ fontWeight: "500" }}>{point.name || "—"}</span>
+                                </span>
+
+                                {point.phone && (
+                                    <a
+                                        href={`tel:${point.phone}`}
                                         style={{
                                             marginLeft: "auto",
                                             color: "#29377D",
-                                            fontWeight: "600",
-                                            flexShrink: 0,
+                                            fontWeight: "700",
+                                            fontSize: "15px",
+                                            textDecoration: "none",
+                                            fontFamily: "'Inter', sans-serif"
                                         }}
                                     >
                                         {point.phone}
-                                    </span>
+                                    </a>
                                 )}
-                            </p>
+                            </div>
                         ))}
                     </div>
                 </div>

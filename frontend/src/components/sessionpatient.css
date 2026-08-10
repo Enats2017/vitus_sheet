@@ -14,6 +14,7 @@
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
+  box-sizing: border-box;
 }
 
 .card-peo {
@@ -33,7 +34,7 @@
 .peo-line {
   width: 100%;
   height: 1px;
-  background-color: #DEE1EA;
+  background-color: #EEF0F8;
   margin-bottom: 20px;
 }
 
@@ -46,17 +47,28 @@
 
 /* LEFT STAT BOXES */
 .peo-left {
-  width: 45%;
+  width: 42%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .peo-stat-box {
   border: 1px solid #DEE1EA;
   border-radius: 10px;
-  padding: 16px 20px;
+  padding: 18px 20px;
   background: #EEF0F8;
+  border-left: 4px solid #29377D;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.peo-stat-box.overall {
+  border-left: 4px solid #2E9E6D;
+}
+
+.peo-stat-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(41, 55, 125, 0.06);
 }
 
 .peo-stat-box p {
@@ -85,7 +97,7 @@
 
 /* RIGHT TIMELINE LIST */
 .peo-list-container {
-  width: 50%;
+  width: 55%;
   display: flex;
 }
 
@@ -95,7 +107,7 @@
   padding-left: 36px;
   margin: 0;
   width: 100%;
-  max-height: 180px;
+  max-height: 200px;
   overflow-y: auto;
   padding-right: 10px;
 }
@@ -107,7 +119,7 @@
   left: 11px;
   width: 2px;
   height: calc(100% - 20px);
-  background: #DEE1EA;
+  background: #29377D;
 }
 
 .peo-list li {
@@ -118,17 +130,18 @@
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   color: #282E3D;
+  line-height: 1.4;
 }
 
 .dote {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: 2px solid #29377D;
-  background: #FFFFFF;
+  background: #29377D;
   position: absolute;
   left: -30px;
-  top: 4px;
+  top: 5px;
+  box-shadow: 0 0 0 3px #FFFFFF;
 }
 
 .text {
@@ -144,6 +157,7 @@
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(41, 55, 125, 0.04);
+  margin-bottom: 24px;
 }
 
 .sessions-title {
@@ -164,12 +178,12 @@
   width: 32%;
   border: 1px solid #DEE1EA;
   border-radius: 10px;
-  padding: 18px;
+  padding: 20px;
   background: #EEF0F8;
 }
 
 .filters-box h3 {
-  margin-bottom: 14px;
+  margin: 0 0 16px 0;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -191,8 +205,10 @@
   color: #666880;
 }
 
-.filter-group input {
+.filter-group input,
+.react-datepicker__input-container input {
   width: 100%;
+  height: 38px;
   padding: 8px 12px;
   border-radius: 6px;
   border: 1px solid #DEE1EA;
@@ -201,6 +217,12 @@
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   box-sizing: border-box;
+}
+
+.filter-group input:focus,
+.react-datepicker__input-container input:focus {
+  outline: none;
+  border-color: #29377D;
 }
 
 /* TABLE BOX */
@@ -281,23 +303,25 @@ tbody tr:hover {
 /* BUTTONS */
 .filter-actions {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-top: 16px;
+  flex-wrap: wrap;
 }
 
-/* Apply Filter Button - PRIMARY RED AS SPECIFIED */
+/* Apply Filter Button - SMALL COMPACT RED */
 .apply-filter-btn {
+  width: auto;
+  height: 34px;
   background: #EE272A;
   color: #FFFFFF;
   border: none;
-  padding: 9px 18px;
-  border-radius: 8px;
+  padding: 0 16px;
+  border-radius: 6px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   transition: background-color 0.2s ease;
 }
 
@@ -306,15 +330,17 @@ tbody tr:hover {
 }
 
 .clear-filter-btn {
-  background: transparent;
+  width: auto;
+  height: 34px;
+  background: #FFFFFF;
   color: #29377D;
   border: 1px solid #DEE1EA;
-  padding: 9px 18px;
-  border-radius: 8px;
+  padding: 0 14px;
+  border-radius: 6px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   transition: all 0.2s ease;
 }
 
@@ -368,18 +394,6 @@ tbody tr:hover {
 .react-datepicker__day--selected {
   background: #29377D !important;
   color: #FFFFFF !important;
-}
-
-.react-datepicker__input-container input {
-  width: 100%;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #DEE1EA;
-  background: #FFFFFF;
-  color: #282E3D;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {

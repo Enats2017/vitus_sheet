@@ -195,7 +195,7 @@ const SessionPatient = () => {
                                 <span>In {monthData?.month || ""}</span>
                             </div>
 
-                            <div className="peo-stat-box">
+                            <div className="peo-stat-box overall">
                                 <p>Overall patients</p>
                                 <h1>{monthData?.overallCount || 0}</h1>
                                 <span>Till date</span>
@@ -275,13 +275,13 @@ const SessionPatient = () => {
                                     Clear Filter
                                 </button>
                             )}
-
-                            <center>
-                                <p style={{ color: "#ff8080", marginTop: "10px" }}>
-                                    {error}
-                                </p>
-                            </center>
                         </div>
+
+                        {error && (
+                            <p style={{ color: "#EE272A", marginTop: "10px", fontSize: "12px" }}>
+                                {error}
+                            </p>
+                        )}
                     </div>
 
                     {/* TABLE */}

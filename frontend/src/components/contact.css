@@ -37,15 +37,15 @@
 
 .helpline-label {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   color: #29377D;
   white-space: nowrap;
 }
 
 .helpline-number {
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.5px;
   margin-left: auto;
